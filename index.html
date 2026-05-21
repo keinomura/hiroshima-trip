@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1f3a5f">
+<title>広島・宮島の旅 — Travel Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+    --shu: #b94a3b;
+    --shu-light: #d85c47;
+    --shu-deep: #8a3528;
+    --ai: #1f3a5f;
+    --ai-deep: #142845;
+    --sumi: #2b2b2b;
+    --kinari: #f5efe4;
+    --washi: #faf6ed;
+    --washi-deep: #f0e8d0;
+    --kincha: #b08a4a;
+    --moegi: #6d8f5e;
+    --line: #d9cfb8;
+    --line-soft: #ebe1ca;
+    --shadow: 0 4px 20px rgba(31, 58, 95, 0.08);
+    --shadow-strong: 0 8px 32px rgba(31, 58, 95, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+    color: var(--sumi);
+    background: var(--washi);
+    line-height: 1.85;
+    overflow-x: hidden;
+    min-height: 100vh;
+    font-size: 16px;
+    /* iPhone safe area対応 */
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 和紙テクスチャ */
+body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(176,138,74,0.04) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(185,74,59,0.03) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+main { position: relative; z-index: 1; padding-bottom: 70px; }
+
+/* ============ ヒーロー ============ */
+.hero {
+    position: relative;
+    background: linear-gradient(180deg, #e8dec5 0%, #f5efe4 50%, #d8c9a6 100%);
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+}
+
+.hero-art {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+}
+
+.hero-sun {
+    position: absolute;
+    top: 80px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #d85c47 0%, #b94a3b 60%, transparent 100%);
+    box-shadow: 0 0 60px rgba(185,74,59,0.4);
+}
+
+.hero-torii {
+    position: absolute;
+    bottom: 70px; left: 50%;
+    transform: translateX(-50%);
+    width: 170px;
+    height: 120px;
+}
+.hero-torii::before, .hero-torii::after {
+    content: "";
+    position: absolute;
+    background: var(--shu-deep);
+}
+.hero-torii::before {
+    top: 0; left: -15px; right: -15px;
+    height: 13px;
+    border-radius: 3px;
+    box-shadow: 0 20px 0 -2px var(--shu-deep);
+}
+.hero-torii::after {
+    bottom: 0; left: 17px;
+    width: 12px; height: 120px;
+    box-shadow: 141px 0 0 var(--shu-deep);
+}
+.hero-torii-cross {
+    position: absolute;
+    top: 55px; left: 22%; right: 22%;
+    height: 8px;
+    background: var(--shu-deep);
+}
+
+.hero-wave {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(180deg, transparent 0%, rgba(31,58,95,0.3) 30%, var(--ai-deep) 100%);
+}
+.hero-wave::before, .hero-wave::after {
+    content: "";
+    position: absolute;
+    left: -10%; right: -10%;
+    height: 6px;
+    background: repeating-linear-gradient(90deg,
+        transparent 0, transparent 20px,
+        rgba(255,255,255,0.4) 20px, rgba(255,255,255,0.4) 40px);
+}
+.hero-wave::before { top: 20%; }
+.hero-wave::after { top: 50%; opacity: 0.5; }
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 32px 24px 36px;
+    background: var(--washi);
+    border-top: 2px solid var(--shu);
+}
+
+.hero-content::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: 24px; right: 24px;
+    height: 1px;
+    background: var(--shu);
+}
+
+.hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--shu);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.hero-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ai-deep);
+    line-height: 1.15;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+}
+.hero-title .accent {
+    color: var(--shu);
+    margin: 0 6px;
+}
+
+.hero-title-sub {
+    font-size: 22px;
+    color: var(--shu);
+    font-weight: 600;
+}
+
+.hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--kincha);
+    margin-top: 12px;
+    letter-spacing: 0.06em;
+}
+
+.hero-dates {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 22px;
+    border: 1px solid var(--shu);
+    border-radius: 30px;
+    background: rgba(250, 246, 237, 0.7);
+}
+.hero-dates .date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--sumi);
+    letter-spacing: 0.05em;
+}
+.hero-dates .arrow {
+    color: var(--shu);
+    font-size: 14px;
+}
+
+/* ============ ナビゲーション（粘着） ============ */
+.nav-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 246, 237, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 4px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 0 2px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    color: var(--ai);
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+.nav-tab.active, .nav-tab:active {
+    background: var(--ai);
+    color: var(--washi);
+}
+
+/* ============ セクション ============ */
+section.block {
+    padding: 32px 20px 16px;
+    position: relative;
+}
+
+.section-head {
+    margin-bottom: 20px;
+}
+.section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--shu);
+    line-height: 1;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+}
+.section-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--ai-deep);
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+.section-title .en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--kincha);
+    margin-left: auto;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+/* ============ 「今の予定」カード ============ */
+.now-card {
+    background: linear-gradient(135deg, var(--ai-deep) 0%, var(--ai) 100%);
+    color: var(--washi);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 16px 0;
+    position: relative;
+    box-shadow: var(--shadow-strong);
+    overflow: hidden;
+}
+.now-card::before {
+    content: "";
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(185,74,59,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.now-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--shu-light);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.now-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--washi);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.now-title {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+.now-desc {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    color: var(--line);
+    line-height: 1.75;
+}
+.now-next {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 14px;
+    color: var(--line);
+}
+.now-next strong {
+    color: var(--kincha);
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.1em;
+}
+
+/* ============ 日程バナー ============ */
+.day-banner {
+    background: linear-gradient(135deg, var(--ai-deep) 0%, var(--ai) 100%);
+    color: var(--washi);
+    padding: 16px 20px;
+    margin: 24px 16px 0;
+    border-radius: 12px;
+    border-left: 4px solid var(--shu);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+.day-banner.day2 {
+    background: linear-gradient(135deg, var(--shu-deep) 0%, var(--shu) 100%);
+    border-left-color: var(--ai-deep);
+}
+.day-banner .day-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+}
+.day-banner .day-date {
+    font-size: 13px;
+    text-align: right;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+/* ============ タイムライン ============ */
+.timeline {
+    position: relative;
+    padding: 16px 16px 0 16px;
+}
+.tl-item {
+    position: relative;
+    padding: 14px 0 14px 76px;
+    border-bottom: 1px dashed var(--line-soft);
+    transition: background 0.3s;
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-item.current {
+    background: linear-gradient(90deg, rgba(185,74,59,0.08) 0%, transparent 60%);
+    border-radius: 8px;
+    padding-left: 76px;
+}
+.tl-item.current::after {
+    content: "NOW";
+    position: absolute;
+    top: 16px; right: 4px;
+    background: var(--shu);
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.tl-time {
+    position: absolute;
+    left: 0; top: 14px;
+    width: 52px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--shu);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+.tl-dot {
+    position: absolute;
+    left: 58px; top: 22px;
+    width: 11px; height: 11px;
+    background: var(--shu);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--washi), 0 0 0 4px var(--shu);
+}
+.tl-dot.move {
+    background: var(--washi);
+    box-shadow: 0 0 0 3px var(--washi), 0 0 0 4px var(--kincha);
+}
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 80px; top: 30px; bottom: 30px;
+    width: 1px;
+    background-image: linear-gradient(var(--kincha) 50%, transparent 50%);
+    background-size: 1px 6px;
+}
+.tl-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ai-deep);
+    margin-bottom: 6px;
+    line-height: 1.4;
+    padding-left: 8px;
+}
+.tl-desc {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    color: var(--sumi);
+    line-height: 1.8;
+    padding-left: 8px;
+}
+.tl-tag {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--washi);
+    padding: 3px 9px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: 3px;
+    font-weight: 600;
+}
+.tl-tag.move { background: var(--kincha); }
+.tl-tag.eat { background: var(--shu); }
+.tl-tag.see { background: var(--ai); }
+
+/* タイムライン上のアクションボタン */
+.tl-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    margin-left: 8px;
+    margin-right: 4px;
+    padding: 8px 14px;
+    background: var(--washi-deep);
+    color: var(--ai-deep);
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+}
+.tl-action:active { background: var(--ai); color: var(--washi); }
+.tl-action svg {
+    width: 14px; height: 14px;
+    fill: currentColor;
+}
+
+/* ============ スポットカード ============ */
+.spot-list {
+    padding: 8px 16px;
+}
+.spot-card {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--shu);
+    border-radius: 12px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+}
+.spot-card.ai { border-left-color: var(--ai); }
+.spot-card.kincha { border-left-color: var(--kincha); }
+.spot-card.moegi { border-left-color: var(--moegi); }
+
+.spot-card-header {
+    padding: 16px 18px 12px;
+    position: relative;
+}
+.spot-num {
+    position: absolute;
+    top: 12px; right: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--line);
+    font-weight: 600;
+    line-height: 1;
+}
+.spot-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ai-deep);
+    margin-bottom: 4px;
+    padding-right: 44px;
+    line-height: 1.3;
+}
+.spot-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--kincha);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+.spot-desc {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--sumi);
+    padding: 0 18px 14px;
+}
+
+.spot-info {
+    padding: 12px 18px;
+    background: rgba(245, 239, 228, 0.5);
+    border-top: 1px dotted var(--line);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.8;
+}
+.spot-info .row {
+    display: flex;
+    gap: 10px;
+    color: #555;
+}
+.spot-info .row .key {
+    color: var(--shu);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    width: 40px;
+}
+
+.spot-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--line);
+}
+.spot-actions.three { grid-template-columns: 1fr 1fr 1fr; }
+.spot-actions a {
+    padding: 16px 12px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--ai-deep);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.6);
+    border-right: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    letter-spacing: 0.05em;
+}
+.spot-actions a:last-child { border-right: none; }
+.spot-actions a:active {
+    background: var(--ai);
+    color: var(--washi);
+}
+.spot-actions svg {
+    width: 16px; height: 16px;
+    fill: currentColor;
+}
+
+/* ============ 地図 ============ */
+.map-wrap {
+    background: var(--washi-deep);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 12px 16px;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+.map-caption {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    color: #777;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+}
+.map-caption strong { color: var(--shu); }
+
+svg.map { display: block; width: 100%; height: auto; }
+svg.map a { cursor: pointer; }
+svg.map a:active circle, svg.map a:active rect { opacity: 0.6; }
+
+/* ============ Tipボックス ============ */
+.tip-box {
+    background: rgba(31,58,95,0.05);
+    border-left: 4px solid var(--ai);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    margin: 12px 16px;
+}
+.tip-box.shu {
+    background: rgba(185,74,59,0.06);
+    border-left-color: var(--shu);
+}
+.tip-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ai-deep);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+.tip-box.shu .tip-title { color: var(--shu-deep); }
+.tip-content {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--sumi);
+}
+
+/* ============ マイ情報（折りたたみ） ============ */
+.collapse {
+    margin: 12px 16px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+.collapse summary {
+    padding: 16px 20px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--ai-deep);
+    font-size: 16px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 0.05em;
+}
+.collapse summary::-webkit-details-marker { display: none; }
+.collapse summary::after {
+    content: "＋";
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--shu);
+    font-size: 24px;
+    transition: transform 0.2s;
+}
+.collapse[open] summary::after { content: "−"; }
+.collapse summary .icon {
+    color: var(--shu);
+    margin-right: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+}
+.collapse-body {
+    padding: 10px 20px 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    line-height: 1.9;
+    border-top: 1px dotted var(--line);
+}
+
+.info-row {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--line-soft);
+}
+.info-row:last-child { border-bottom: none; }
+.info-row .key {
+    color: var(--shu);
+    font-weight: 700;
+    flex-shrink: 0;
+    width: 90px;
+    letter-spacing: 0.05em;
+}
+.info-row .val { color: var(--sumi); flex: 1; }
+
+/* ============ チェックリスト ============ */
+.checklist {
+    list-style: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+.checklist li {
+    padding: 14px 0 14px 36px;
+    border-bottom: 1px dotted var(--line-soft);
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 14px;
+    width: 22px; height: 22px;
+    border: 1.5px solid var(--shu);
+    border-radius: 3px;
+    background: white;
+    transition: all 0.15s;
+}
+.checklist li.checked {
+    color: #aaa;
+    text-decoration: line-through;
+}
+.checklist li.checked::before {
+    background: var(--shu);
+    border-color: var(--shu);
+}
+.checklist li.checked::after {
+    content: "✓";
+    position: absolute;
+    left: 4px; top: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1;
+}
+
+/* ============ クイックアクセス（固定下部） ============ */
+.bottom-bar {
+    position: fixed;
+    bottom: 12px; left: 12px; right: 12px;
+    background: rgba(20, 40, 69, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 32px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 99;
+    box-shadow: 0 8px 32px rgba(20, 40, 69, 0.3);
+}
+.bottom-bar a {
+    color: var(--washi);
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 12px;
+    text-align: center;
+    padding: 4px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+    min-width: 44px;
+}
+.bottom-bar a:active { color: var(--shu-light); }
+.bottom-bar svg {
+    width: 22px; height: 22px;
+    fill: currentColor;
+}
+
+/* ============ 区切り装飾 ============ */
+.divider {
+    text-align: center;
+    margin: 24px 0;
+    color: var(--kincha);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    position: relative;
+}
+.divider::before, .divider::after {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--kincha);
+    vertical-align: middle;
+    margin: 0 12px;
+    opacity: 0.5;
+}
+
+/* ============ フッター ============ */
+.footer {
+    background: var(--ai-deep);
+    color: var(--washi);
+    padding: 60px 24px 40px;
+    text-align: center;
+    margin-top: 40px;
+}
+.footer-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.5em;
+    color: var(--kincha);
+    margin-bottom: 24px;
+}
+.footer-quote {
+    font-size: 19px;
+    line-height: 2;
+    margin-bottom: 16px;
+    color: var(--washi);
+}
+.footer-quote .red {
+    color: var(--shu-light);
+    font-weight: 600;
+}
+.footer-end {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    color: var(--kincha);
+    letter-spacing: 0.4em;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ============ メディアクエリ（狭い画面） ============ */
+@media (max-width: 360px) {
+    body { font-size: 15px; }
+    .hero-title { font-size: 32px; }
+    .section-title { font-size: 22px; }
+    .tl-title { font-size: 16px; }
+    .tl-desc { font-size: 13.5px; }
+    .spot-name { font-size: 18px; }
+    .spot-desc { font-size: 14px; }
+}
+
+@media (min-width: 700px) {
+    /* デスクトップで見ても綺麗に */
+    main { max-width: 480px; margin: 0 auto; }
+}
+
+/* リンクの基本スタイル */
+a { color: var(--ai-deep); }
+
+/* スクロールインジケータ（次の予定へ） */
+.scroll-hint {
+    text-align: center;
+    margin: 24px 0 0;
+    color: var(--kincha);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+</style>
+</head>
+<body>
+
+<main>
+    <!-- ============ ヒーロー ============ -->
+    <header class="hero">
+        <div class="hero-art">
+            <div class="hero-sun"></div>
+            <div class="hero-torii">
+                <div class="hero-torii-cross"></div>
+            </div>
+            <div class="hero-wave"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">A TWO-DAY JOURNEY</div>
+            <h1 class="hero-title">
+                広島<span class="accent">×</span>宮島<br>
+                <span class="hero-title-sub">の旅</span>
+            </h1>
+            <div class="hero-sub">Hiroshima &amp; Miyajima — Setouchi Travelogue</div>
+            <div class="hero-dates">
+                <span class="date">5.26 Tue</span>
+                <span class="arrow">→</span>
+                <span class="date">5.27 Wed</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ ナビ ============ -->
+    <nav class="nav-tabs">
+        <a href="#today" class="nav-tab active">今日の予定</a>
+        <a href="#day1" class="nav-tab">DAY 1</a>
+        <a href="#day2" class="nav-tab">DAY 2</a>
+        <a href="#map-hiroshima" class="nav-tab">広島マップ</a>
+        <a href="#map-miyajima" class="nav-tab">宮島マップ</a>
+        <a href="#food" class="nav-tab">グルメ</a>
+        <a href="#info" class="nav-tab">マイ情報</a>
+    </nav>
+
+    <!-- ============ 今の予定（動的） ============ -->
+    <section id="today" class="block" style="padding-top: 24px;">
+        <div class="section-head">
+            <span class="section-num">01</span>
+            <h2 class="section-title">
+                <span>今この瞬間</span>
+                <span class="en">Now &amp; Next</span>
+            </h2>
+        </div>
+        <div id="now-card-container">
+             <!-- JSで埋める -->
+        </div>
+    </section>
+
+    <!-- ============ DAY 1 ============ -->
+    <section id="day1" class="block">
+        <div class="section-head">
+            <span class="section-num">02</span>
+            <h2 class="section-title">
+                <span>一日目</span>
+                <span class="en">Day One</span>
+            </h2>
+        </div>
+
+        <div class="day-banner">
+            <span class="day-label">DAY ONE</span>
+            <span class="day-date">5月26日（火）<br>豊橋 → 広島</span>
+        </div>
+
+        <div class="timeline" data-day="1">
+            <div class="tl-item" data-time="07:20">
+                <span class="tl-time">07:20</span>
+                <span class="tl-dot move"></span>
+                <div class="tl-title">豊橋駅 出発<span class="tl-tag move">Train</span></div>
+                <div class="tl-desc">東海道・山陽新幹線で広島へ。名古屋で「のぞみ」乗り換えが一般的。豊橋〜広島 約3時間〜3時間半。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=豊橋駅" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    豊橋駅マップ
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="11:00">
+                <span class="tl-time">11:00</span>
+                <span class="tl-dot move"></span>
+                <div class="tl-title">広島駅 到着</div>
+                <div class="tl-desc">広島駅南口より広島電鉄（路面電車）で平和記念公園方面へ。「原爆ドーム前」または「紙屋町」下車。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=広島駅" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    広島駅マップ
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="12:00">
+                <span class="tl-time">12:00</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">広島お好み焼きランチ<span class="tl-tag eat">Eat</span></div>
+                <div class="tl-desc">広島に着いたらまずはこれ。「みっちゃん総本店 八丁堀本店」で本場のお好み焼きを。鉄板の前でじっくり焼き上がりを待つ。</div>
+                <a class="tl-action" href="#shop-mitchan">
+                    <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+                    詳しく見る
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="13:30">
+                <span class="tl-time">13:30</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">原爆ドーム・平和記念公園 散策<span class="tl-tag see">See</span></div>
+                <div class="tl-desc">世界遺産の原爆ドームを訪れ、平和の灯、原爆死没者慰霊碑、平和の鐘を巡る。元安川沿いの並木が美しい。目の前のおりづるタワー屋上もおすすめ。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=原爆ドーム+広島" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    マップで開く
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="14:30">
+                <span class="tl-time">14:30</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">広島平和記念資料館<span class="tl-tag see">See</span></div>
+                <div class="tl-desc">入館料 大人200円。被爆の実相を伝える展示。所要1〜2時間。展示は重いものなので、心穏やかな時間を取って向き合いたい。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=広島平和記念資料館" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    マップで開く
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="16:30">
+                <span class="tl-time">16:30</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">縮景園・広島城（任意）<span class="tl-tag see">See</span></div>
+                <div class="tl-desc">時間と体力に応じて。または商店街（本通り・八丁堀）で買い物・カフェ休憩でも◎</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=縮景園+広島" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    縮景園
+                </a>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=広島城" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    広島城
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="17:30">
+                <span class="tl-time">17:30</span>
+                <span class="tl-dot move"></span>
+                <div class="tl-title">ホテル チェックイン<span class="tl-tag move">Move</span></div>
+                <div class="tl-desc">ANAクラウンプラザホテル広島。平和記念公園から徒歩約8分、繁華街にも近い好立地。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=ANAクラウンプラザホテル広島" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    ホテルマップ
+                </a>
+                <a class="tl-action" href="tel:0822411111">
+                    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                    電話
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="19:00">
+                <span class="tl-time">19:00</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">夕食：薬研堀「八昌」or 地魚<span class="tl-tag eat">Eat</span></div>
+                <div class="tl-desc">ミシュランビブグルマンの広島お好み焼き名店、または流川・薬研堀の居酒屋で地酒と瀬戸内の魚を。食後は地元クラフトビールも◎</div>
+                <a class="tl-action" href="#shop-hassho">
+                    <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+                    詳しく見る
+                </a>
+                <a class="tl-action" href="#shop-hnb">
+                    <svg viewBox="0 0 24 24"><path d="M5 3v2h14V3H5zm0 6v2h14V9H5zM3 21h18v-2H3v2zM3 5v2h18V5H3z"/></svg>
+                    クラフトビール
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider">⁂</div>
+
+    <!-- ============ DAY 2 ============ -->
+    <section id="day2" class="block">
+        <div class="section-head">
+            <span class="section-num">03</span>
+            <h2 class="section-title">
+                <span>二日目</span>
+                <span class="en">Day Two</span>
+            </h2>
+        </div>
+
+        <div class="day-banner day2">
+            <span class="day-label">DAY TWO</span>
+            <span class="day-date">5月27日（水）<br>宮島 → 広島 → 豊橋</span>
+        </div>
+
+        <div class="tip-box shu" style="margin-top: 16px;">
+            <div class="tip-title">▎ 5/27の潮汐</div>
+            <div class="tip-content">干潮 <strong>6:14</strong> / <strong>18:43</strong>　満潮 <strong>12:11頃</strong><br>お昼前後は満潮、社殿が海に浮かぶ姿が見られる絶好のタイミング。</div>
+        </div>
+
+        <div class="timeline" data-day="2">
+            <div class="tl-item" data-time="07:00">
+                <span class="tl-time">07:00</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">ホテルにて朝食</div>
+                <div class="tl-desc">ANAクラウンプラザのレストラン「Café in the Park」の朝食ブッフェ。瀬戸内の食材も並ぶ。または徒歩5分のアンデルセンでモーニングも。</div>
+                <a class="tl-action" href="#shop-andersen">
+                    <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+                    アンデルセン
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="08:30">
+                <span class="tl-time">08:30</span>
+                <span class="tl-dot move"></span>
+                <div class="tl-title">ホテル出発 → 元安桟橋へ<span class="tl-tag move">Walk</span></div>
+                <div class="tl-desc">ホテルから元安桟橋まで徒歩約10〜12分。原爆ドームの南側、元安橋のたもとに乗り場あり。目印は「カフェ ポンテ」。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=元安桟橋+広島" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    元安橋マップ
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="09:30">
+                <span class="tl-time">09:30</span>
+                <span class="tl-dot move"></span>
+                <div class="tl-title">ひろしま世界遺産航路 出航<span class="tl-tag move">Ferry</span></div>
+                <div class="tl-desc">高速船で宮島3号桟橋へ約45分。乗船料 片道大人¥2,400。原爆ドームを背に瀬戸内の海へ。<br><strong>※前日までの予約推奨</strong></div>
+                <a class="tl-action" href="https://www.aqua-net-h.co.jp/heritage/" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                    公式予約
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="10:15">
+                <span class="tl-time">10:15</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">宮島 到着・表参道商店街へ<span class="tl-tag see">See</span></div>
+                <div class="tl-desc">宮島3号桟橋から徒歩で表参道へ。鹿に出会いながら、海岸沿いをのんびり歩く。</div>
+            </div>
+
+            <div class="tl-item" data-time="10:30">
+                <span class="tl-time">10:30</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">嚴島神社 参拝<span class="tl-tag see">See</span></div>
+                <div class="tl-desc">世界遺産・嚴島神社。海上に浮かぶ朱塗りの社殿と大鳥居。拝観料 大人¥300。満潮時刻に合わせた絶好のタイミング。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=嚴島神社+宮島" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    マップで開く
+                </a>
+                <a class="tl-action" href="tel:0829442020">
+                    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                    電話
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="12:00">
+                <span class="tl-time">12:00</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">宮島ランチ：あなご飯 or 牡蠣<span class="tl-tag eat">Eat</span></div>
+                <div class="tl-desc">宮島名物・あなご飯を本場で。「穴子と牡蠣 まめたぬき」「ふじたや」など。下のグルメ欄から店舗情報へ。表参道の宮島ブルワリーで地ビールも。</div>
+                <a class="tl-action" href="#shop-mametanuki">
+                    <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+                    まめたぬき
+                </a>
+                <a class="tl-action" href="#shop-fujitaya">
+                    <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+                    ふじたや
+                </a>
+                <a class="tl-action" href="#shop-miyajima-beer">
+                    <svg viewBox="0 0 24 24"><path d="M5 3v2h14V3H5zm0 6v2h14V9H5zM3 21h18v-2H3v2zM3 5v2h18V5H3z"/></svg>
+                    宮島ビール
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="13:30">
+                <span class="tl-time">13:30</span>
+                <span class="tl-dot"></span>
+                <div class="tl-title">焼きたて もみじ饅頭・食べ歩き<span class="tl-tag eat">Eat</span></div>
+                <div class="tl-desc">「博多屋」「紅葉堂」の揚げもみじなど。お土産はここで揃える。</div>
+                <a class="tl-action" href="#shop-momijido">
+                    <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+                    詳しく見る
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="14:30">
+                <span class="tl-time">14:30</span>
+                <span class="tl-dot move"></span>
+                <div class="tl-title">宮島桟橋 → 宮島口 → 広島駅<span class="tl-tag move">Move</span></div>
+                <div class="tl-desc">JRフェリー（片道¥200・約10分）で宮島口へ。JR山陽本線で広島駅まで約27分。広島駅 ekie で最終お土産購入。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=JR宮島フェリー乗り場" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    JR宮島フェリー
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="16:22">
+                <span class="tl-time">16:22</span>
+                <span class="tl-dot move"></span>
+                <div class="tl-title">広島駅 出発 → 豊橋へ<span class="tl-tag move">Train</span></div>
+                <div class="tl-desc">のぞみで名古屋へ、名古屋から豊橋へひかり/こだまで乗継。豊橋到着は20時前後の見込み。</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider">⁂</div>
+
+    <!-- ============ 広島マップ ============ -->
+    <section id="map-hiroshima" class="block">
+        <div class="section-head">
+            <span class="section-num">04</span>
+            <h2 class="section-title">
+                <span>広島市内マップ</span>
+                <span class="en">Hiroshima Map</span>
+            </h2>
+        </div>
+
+        <div class="map-wrap">
+            <svg class="map" viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg">
+                <rect width="700" height="480" fill="#f0e8d0"/>
+
+                <!-- 河川 -->
+                <path d="M 110,0 C 115,80 105,180 100,260 C 95,340 105,420 100,480"
+                      stroke="#a5c3d5" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.55"/>
+                <path d="M 220,0 C 225,80 218,180 222,260 C 226,340 220,420 222,480"
+                      stroke="#a5c3d5" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.55"/>
+                <path d="M 560,0 C 568,100 558,200 568,300 C 572,380 562,440 568,480"
+                      stroke="#a5c3d5" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.55"/>
+
+                <text x="98" y="60" font-family="Shippori Mincho" font-size="10" fill="#5a7a90" font-style="italic" text-anchor="middle" font-weight="500">本川</text>
+                <text x="222" y="60" font-family="Shippori Mincho" font-size="10" fill="#5a7a90" font-style="italic" text-anchor="middle" font-weight="500">元安川</text>
+                <text x="566" y="60" font-family="Shippori Mincho" font-size="10" fill="#5a7a90" font-style="italic" text-anchor="middle" font-weight="500">京橋川</text>
+
+                <!-- 路面電車 -->
+                <path d="M 30,200 L 570,200 L 670,200" stroke="#b94a3b" stroke-width="2.5" fill="none" stroke-dasharray="5,4" opacity="0.7"/>
+                <path d="M 290,200 L 295,275 L 305,360 L 320,440" stroke="#b94a3b" stroke-width="2.5" fill="none" stroke-dasharray="5,4" opacity="0.7"/>
+
+                <!-- 平和記念公園 -->
+                <rect x="135" y="180" width="78" height="170" fill="#c5d9b5" opacity="0.55" rx="4"/>
+                <text x="174" y="173" font-family="Shippori Mincho" font-size="11" fill="#4a6938" text-anchor="middle" font-weight="600">平和記念公園</text>
+
+                <!-- 原爆ドーム（タップでマップへ） -->
+                <a href="https://www.google.com/maps/search/?api=1&query=原爆ドーム+広島">
+                    <circle cx="160" cy="210" r="9" fill="#b94a3b"/>
+                    <text x="183" y="216" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b" font-weight="600">① 原爆ドーム</text>
+                </a>
+
+                <!-- 平和記念資料館 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=広島平和記念資料館">
+                    <circle cx="170" cy="305" r="9" fill="#b94a3b"/>
+                    <text x="190" y="310" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b" font-weight="600">② 平和記念資料館</text>
+                </a>
+
+                <!-- 元安桟橋 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=元安桟橋+広島">
+                    <rect x="200" y="225" width="18" height="12" fill="#1f3a5f"/>
+                    <text x="222" y="234" font-family="Noto Sans JP" font-size="9" fill="#142845" font-weight="700">▲元安桟橋</text>
+                </a>
+
+                <!-- ANAクラウンプラザ -->
+                <a href="https://www.google.com/maps/search/?api=1&query=ANAクラウンプラザホテル広島">
+                    <rect x="270" y="330" width="18" height="22" fill="#1f3a5f"/>
+                    <text x="279" y="324" font-family="Shippori Mincho" font-size="13" fill="#1f3a5f" text-anchor="middle" font-weight="700">★</text>
+                    <text x="292" y="345" font-family="Noto Sans JP" font-size="10" fill="#1f3a5f" font-weight="700">ANAクラウンプラザ広島</text>
+                </a>
+
+                <!-- みっちゃん総本店 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=みっちゃん総本店+八丁堀+広島">
+                    <circle cx="475" cy="220" r="8" fill="#b08a4a"/>
+                    <text x="486" y="225" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b" font-weight="600">③ みっちゃん総本店</text>
+                </a>
+
+                <!-- 薬研堀 八昌 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=薬研堀+八昌+広島">
+                    <circle cx="465" cy="265" r="8" fill="#b08a4a"/>
+                    <text x="476" y="270" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b" font-weight="600">④ 薬研堀 八昌</text>
+                </a>
+
+                <!-- 縮景園 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=縮景園+広島">
+                    <circle cx="490" cy="130" r="8" fill="#6d8f5e"/>
+                    <text x="501" y="135" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b" font-weight="600">⑤ 縮景園</text>
+                </a>
+
+                <!-- 広島城 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=広島城">
+                    <circle cx="350" cy="110" r="8" fill="#6d8f5e"/>
+                    <text x="359" y="115" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b" font-weight="600">⑥ 広島城</text>
+                </a>
+
+                <!-- かなわ -->
+                <a href="https://www.google.com/maps/search/?api=1&query=かき船+かなわ+広島">
+                    <circle cx="225" cy="270" r="7" fill="#b08a4a"/>
+                    <text x="237" y="275" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b" font-weight="600">⑦ かなわ（牡蠣）</text>
+                </a>
+
+                <!-- おりづるタワー -->
+                <a href="https://www.google.com/maps/search/?api=1&query=おりづるタワー+広島">
+                    <rect x="155" y="213" width="14" height="10" fill="#1f3a5f" rx="1"/>
+                    <text x="175" y="222" font-family="Noto Sans JP" font-size="9" fill="#1f3a5f" font-weight="700">⑧ おりづるタワー</text>
+                </a>
+
+                <!-- HNB Brewing -->
+                <a href="https://www.google.com/maps/search/?api=1&query=HIROSHIMA+NEIGHBORLY+BREWING+広島">
+                    <circle cx="270" cy="270" r="7" fill="#b08a4a"/>
+                    <text x="281" y="274" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b" font-weight="600">⑨ HNB クラフトビール</text>
+                </a>
+
+                <!-- アンデルセン -->
+                <a href="https://www.google.com/maps/search/?api=1&query=アンデルセン+広島+基町">
+                    <circle cx="345" cy="173" r="7" fill="#b08a4a"/>
+                    <text x="357" y="178" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b" font-weight="600">⑩ アンデルセン</text>
+                </a>
+
+                <!-- お好み村 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=お好み村+広島+新天地">
+                    <circle cx="500" cy="250" r="7" fill="#b08a4a"/>
+                    <text x="511" y="255" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b" font-weight="600">⑪ お好み村</text>
+                </a>
+
+                <!-- 電停 -->
+                <text x="320" y="190" font-family="Noto Sans JP" font-size="9" fill="#888" font-style="italic">●紙屋町</text>
+                <text x="320" y="245" font-family="Noto Sans JP" font-size="9" fill="#888" font-style="italic">本通商店街</text>
+                <text x="290" y="295" font-family="Noto Sans JP" font-size="9" fill="#888" font-style="italic">●袋町</text>
+                <text x="425" y="190" font-family="Noto Sans JP" font-size="9" fill="#888" font-style="italic">●八丁堀</text>
+
+                <!-- 広島駅 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=広島駅">
+                    <rect x="610" y="190" width="50" height="30" fill="#8a3528" rx="2"/>
+                    <text x="635" y="209" font-family="Shippori Mincho" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">広島駅</text>
+                </a>
+
+                <!-- 方位 -->
+                <g transform="translate(640, 60)">
+                    <circle cx="0" cy="0" r="22" fill="rgba(255,255,255,0.6)"/>
+                    <circle cx="0" cy="0" r="22" fill="none" stroke="#b94a3b" stroke-width="1.5"/>
+                    <text x="0" y="-10" font-family="Cormorant Garamond" font-size="11" fill="#b94a3b" text-anchor="middle" font-weight="600">N</text>
+                    <polygon points="0,-7 -4,9 0,6 4,9" fill="#b94a3b"/>
+                    <text x="0" y="18" font-family="Cormorant Garamond" font-size="8" fill="#b94a3b" text-anchor="middle">S</text>
+                </g>
+
+                <!-- 凡例 -->
+                <g transform="translate(35, 400)">
+                    <rect x="-8" y="-18" width="400" height="100" fill="rgba(255,255,255,0.75)" rx="4"/>
+                    <text x="0" y="-3" font-family="Cormorant Garamond" font-size="10" fill="#8a3528" font-style="italic" letter-spacing="2">LEGEND</text>
+                    <line x1="0" y1="3" x2="80" y2="3" stroke="#8a3528" stroke-width="0.5"/>
+
+                    <circle cx="8" cy="22" r="6" fill="#b94a3b"/>
+                    <text x="20" y="25" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b">世界遺産・観光</text>
+
+                    <circle cx="8" cy="42" r="6" fill="#b08a4a"/>
+                    <text x="20" y="45" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b">グルメ・カフェ</text>
+
+                    <rect x="3" y="56" width="10" height="10" fill="#1f3a5f" rx="1"/>
+                    <text x="20" y="65" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b">ホテル周辺・展望</text>
+
+                    <line x1="160" y1="22" x2="200" y2="22" stroke="#b94a3b" stroke-width="2.5" stroke-dasharray="5,4"/>
+                    <text x="208" y="25" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b">広島電鉄（路面電車）</text>
+
+                    <line x1="160" y1="42" x2="200" y2="42" stroke="#a5c3d5" stroke-width="6" opacity="0.7"/>
+                    <text x="208" y="45" font-family="Noto Sans JP" font-size="10" fill="#2b2b2b">河川（太田川水系）</text>
+                </g>
+            </svg>
+            <div class="map-caption">マーカーを<strong>タップ</strong>するとGoogleマップが開きます</div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-title">▎ 路面電車のコツ</div>
+            <div class="tip-content">市内均一¥240。1日乗車券¥700（広電の駅窓口・電停の券売機で購入）。広島駅⇔平和記念公園は約20分。ICカード（Suica/PASMO等）も使えます。</div>
+        </div>
+    </section>
+
+    <div class="divider">⁂</div>
+
+    <!-- ============ 宮島マップ ============ -->
+    <section id="map-miyajima" class="block">
+        <div class="section-head">
+            <span class="section-num">05</span>
+            <h2 class="section-title">
+                <span>宮島マップ</span>
+                <span class="en">Miyajima Map</span>
+            </h2>
+        </div>
+
+        <div class="map-wrap">
+            <svg class="map" viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg">
+                <rect width="700" height="460" fill="#bcd4dc"/>
+
+                <!-- さざ波 -->
+                <g opacity="0.4">
+                    <path d="M 0,80 Q 50,75 100,80 T 200,80 T 300,80 T 400,80 T 500,80 T 600,80 T 700,80" stroke="#7da6c4" stroke-width="0.6" fill="none"/>
+                    <path d="M 0,120 Q 50,115 100,120 T 200,120 T 300,120 T 400,120 T 500,120 T 600,120 T 700,120" stroke="#7da6c4" stroke-width="0.6" fill="none"/>
+                    <path d="M 0,400 Q 50,395 100,400 T 200,400 T 300,400 T 400,400 T 500,400 T 600,400 T 700,400" stroke="#7da6c4" stroke-width="0.6" fill="none"/>
+                    <path d="M 0,440 Q 50,435 100,440 T 200,440 T 300,440 T 400,440 T 500,440 T 600,440 T 700,440" stroke="#7da6c4" stroke-width="0.6" fill="none"/>
+                </g>
+
+                <!-- 島 -->
+                <path d="M 60,180 C 100,150 200,140 300,150 C 400,155 480,170 560,200 C 620,225 640,290 600,340 C 560,380 460,395 350,385 C 240,375 130,360 80,310 C 50,270 40,210 60,180 Z"
+                      fill="#c5b890" stroke="#8a7a5a" stroke-width="1.5"/>
+
+                <!-- 弥山 -->
+                <path d="M 280,220 L 350,170 L 420,225 Z" fill="#9d8e60" opacity="0.8"/>
+                <text x="350" y="200" font-family="Shippori Mincho" font-size="10" fill="#5a4a20" text-anchor="middle" font-weight="500">弥山 535m</text>
+
+                <text x="380" y="280" font-family="Shippori Mincho" font-size="9" fill="#6d4030" font-style="italic">紅葉谷公園</text>
+
+                <!-- 表参道商店街 -->
+                <rect x="195" y="290" width="120" height="20" fill="#e8dec5" opacity="0.7" rx="2"/>
+                <text x="255" y="304" font-family="Noto Sans JP" font-size="9" fill="#5a4520" text-anchor="middle" font-weight="500">表参道商店街</text>
+
+                <!-- 嚴島神社 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=嚴島神社+宮島">
+                    <rect x="155" y="335" width="60" height="22" fill="#b94a3b" opacity="0.85" rx="2"/>
+                    <text x="185" y="350" font-family="Shippori Mincho" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">嚴島神社</text>
+                </a>
+
+                <!-- 大鳥居 -->
+                <g transform="translate(120, 405)">
+                    <rect x="-22" y="0" width="44" height="3" fill="#b94a3b"/>
+                    <rect x="-25" y="-3" width="50" height="3" fill="#b94a3b"/>
+                    <rect x="-18" y="3" width="3" height="15" fill="#b94a3b"/>
+                    <rect x="15" y="3" width="3" height="15" fill="#b94a3b"/>
+                    <rect x="-18" y="8" width="36" height="2" fill="#b94a3b"/>
+                </g>
+                <text x="120" y="435" font-family="Shippori Mincho" font-size="10" fill="#8a3528" text-anchor="middle" font-weight="700">⛩ 大鳥居</text>
+
+                <!-- 宮島3号桟橋 -->
+                <circle cx="475" cy="345" r="10" fill="#1f3a5f"/>
+                <text x="475" y="350" font-family="Cormorant Garamond" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">3</text>
+                <text x="495" y="350" font-family="Noto Sans JP" font-size="10" fill="#1f3a5f" font-weight="700">③号桟橋（世界遺産）</text>
+
+                <!-- JRフェリー -->
+                <a href="https://www.google.com/maps/search/?api=1&query=JR宮島フェリー乗り場">
+                    <rect x="465" y="300" width="22" height="12" fill="#1f3a5f"/>
+                    <text x="495" y="310" font-family="Noto Sans JP" font-size="10" fill="#1f3a5f" font-weight="700">JR/松大フェリー</text>
+                </a>
+
+                <!-- 桟橋から商店街への動線 -->
+                <path d="M 475,322 L 430,300 L 350,295 L 315,300" stroke="#b08a4a" stroke-width="1.5" stroke-dasharray="4,3" fill="none"/>
+
+                <!-- まめたぬき -->
+                <a href="https://www.google.com/maps/search/?api=1&query=まめたぬき+宮島">
+                    <circle cx="250" cy="295" r="6" fill="#b08a4a"/>
+                    <text x="250" y="285" font-family="Cormorant Garamond" font-size="9" fill="#8a3528" text-anchor="middle" font-weight="700">①</text>
+                </a>
+
+                <!-- ふじたや -->
+                <a href="https://www.google.com/maps/search/?api=1&query=ふじたや+宮島">
+                    <circle cx="200" cy="330" r="6" fill="#b08a4a"/>
+                    <text x="200" y="345" font-family="Cormorant Garamond" font-size="9" fill="#8a3528" text-anchor="middle" font-weight="700">②</text>
+                </a>
+
+                <!-- 博多屋 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=博多屋+宮島">
+                    <circle cx="280" cy="298" r="6" fill="#6d8f5e"/>
+                    <text x="280" y="288" font-family="Cormorant Garamond" font-size="9" fill="#4a6938" text-anchor="middle" font-weight="700">③</text>
+                </a>
+
+                <!-- 紅葉堂 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=紅葉堂+本店+宮島">
+                    <circle cx="220" cy="305" r="6" fill="#6d8f5e"/>
+                    <text x="220" y="320" font-family="Cormorant Garamond" font-size="9" fill="#4a6938" text-anchor="middle" font-weight="700">④</text>
+                </a>
+
+                <!-- 宮島ブルワリー -->
+                <a href="https://www.google.com/maps/search/?api=1&query=宮島ブルワリー+宮島">
+                    <circle cx="260" cy="310" r="6" fill="#b08a4a"/>
+                    <text x="260" y="300" font-family="Cormorant Garamond" font-size="9" fill="#8a3528" text-anchor="middle" font-weight="700">⑤</text>
+                    <text x="282" y="314" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b" font-weight="600">宮島ブルワリー</text>
+                </a>
+
+                <text x="350" y="335" font-family="Noto Sans JP" font-size="12" opacity="0.6">🦌</text>
+                <text x="420" y="345" font-family="Noto Sans JP" font-size="12" opacity="0.6">🦌</text>
+
+                <!-- 方位 -->
+                <g transform="translate(640, 60)">
+                    <circle cx="0" cy="0" r="22" fill="white" opacity="0.85"/>
+                    <circle cx="0" cy="0" r="22" fill="none" stroke="#b94a3b" stroke-width="1.5"/>
+                    <text x="0" y="-10" font-family="Cormorant Garamond" font-size="11" fill="#b94a3b" text-anchor="middle" font-weight="600">N</text>
+                    <polygon points="0,-7 -4,9 0,6 4,9" fill="#b94a3b"/>
+                    <text x="0" y="18" font-family="Cormorant Garamond" font-size="8" fill="#b94a3b" text-anchor="middle">S</text>
+                </g>
+
+                <text x="350" y="55" font-family="Cormorant Garamond" font-size="22" fill="#8a3528" text-anchor="middle" font-style="italic" letter-spacing="6">M I Y A J I M A</text>
+
+                <!-- 凡例 -->
+                <g transform="translate(35, 125)">
+                    <rect x="-5" y="-15" width="200" height="102" fill="rgba(255,255,255,0.9)" rx="3"/>
+                    <text x="0" y="0" font-family="Cormorant Garamond" font-size="10" fill="#8a3528" font-style="italic" letter-spacing="2">SHOPS</text>
+                    <line x1="0" y1="6" x2="100" y2="6" stroke="#8a3528" stroke-width="0.5"/>
+
+                    <circle cx="6" cy="22" r="5" fill="#b08a4a"/>
+                    <text x="16" y="26" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b">① まめたぬき</text>
+
+                    <circle cx="6" cy="38" r="5" fill="#b08a4a"/>
+                    <text x="16" y="42" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b">② ふじたや ★</text>
+
+                    <circle cx="6" cy="54" r="5" fill="#6d8f5e"/>
+                    <text x="16" y="58" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b">③ 博多屋</text>
+
+                    <circle cx="6" cy="70" r="5" fill="#6d8f5e"/>
+                    <text x="16" y="74" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b">④ 紅葉堂</text>
+
+                    <circle cx="6" cy="86" r="5" fill="#b08a4a"/>
+                    <text x="16" y="90" font-family="Noto Sans JP" font-size="9" fill="#2b2b2b">⑤ 宮島ブルワリー</text>
+                </g>
+            </svg>
+            <div class="map-caption">マーカーを<strong>タップ</strong>するとGoogleマップが開きます</div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-title">▎ 桟橋に注意</div>
+            <div class="tip-content">世界遺産航路は「3号桟橋」、JR/松大フェリーは別の桟橋。帰りは桟橋を間違えないように！</div>
+        </div>
+    </section>
+
+    <div class="divider">⁂</div>
+
+    <!-- ============ グルメ ============ -->
+    <section id="food" class="block">
+        <div class="section-head">
+            <span class="section-num">06</span>
+            <h2 class="section-title">
+                <span>厳選グルメ</span>
+                <span class="en">Restaurants</span>
+            </h2>
+        </div>
+
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--shu); letter-spacing: 0.3em; margin: 16px 16px 8px; text-transform: uppercase;">— Hiroshima City</h3>
+
+        <div class="spot-list">
+            <!-- みっちゃん総本店 -->
+            <div class="spot-card" id="shop-mitchan">
+                <div class="spot-card-header">
+                    <span class="spot-num">01</span>
+                    <div class="spot-name">みっちゃん総本店<br>八丁堀本店</div>
+                    <div class="spot-en">Okonomiyaki Mitchan Sohonten</div>
+                </div>
+                <div class="spot-desc">広島風お好み焼きの元祖といわれる名店。創業1950年。パリッと焼かれた生麺と、オリジナルソースの絶妙な味。鉄板の前で焼き上がりを待つ時間も愉しみ。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>中区八丁堀6-7 チュリス八丁堀1F</span></div>
+                    <div class="row"><span class="key">営業</span><span>11:30-14:30 / 17:30-21:00（火休）</span></div>
+                    <div class="row"><span class="key">名物</span><span>そば肉玉 ¥1,000前後</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=みっちゃん総本店+八丁堀+広島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="tel:0822215438">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        電話
+                    </a>
+                </div>
+            </div>
+
+            <!-- 薬研堀 八昌 -->
+            <div class="spot-card ai" id="shop-hassho">
+                <div class="spot-card-header">
+                    <span class="spot-num">02</span>
+                    <div class="spot-name">薬研堀 八昌</div>
+                    <div class="spot-en">Yagenbori Hassho</div>
+                </div>
+                <div class="spot-desc">ミシュランガイド広島でビブグルマン獲得。20〜30分かけてじっくり焼き上げる職人技。待ち時間には牛タンや牡蠣（冬季）の鉄板焼きを。夜のみ営業の名店。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>中区薬研堀10-6</span></div>
+                    <div class="row"><span class="key">営業</span><span>16:00-22:30（日 〜21:00／月休）</span></div>
+                    <div class="row"><span class="key">名物</span><span>そば肉玉 ¥1,150〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=薬研堀+八昌+広島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="tel:0822481776">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        電話
+                    </a>
+                </div>
+            </div>
+
+            <!-- かなわ -->
+            <div class="spot-card kincha">
+                <div class="spot-card-header">
+                    <span class="spot-num">03</span>
+                    <div class="spot-name">かき船 かなわ</div>
+                    <div class="spot-en">Kanawa — Oyster Specialty</div>
+                </div>
+                <div class="spot-desc">広島湾の自社養殖牡蠣を提供する老舗。平和記念公園のすぐそば、元安川に浮かぶ船上の店。<br>※5月は牡蠣のオフシーズン、地魚料理や岩牡蠣メニューを確認推奨。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>中区大手町1-地先（元安川）</span></div>
+                    <div class="row"><span class="key">営業</span><span>11:00-15:00 / 17:00-22:00</span></div>
+                    <div class="row"><span class="key">予算</span><span>夜 ¥10,000〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=かき船+かなわ+広島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="tel:0822417416">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        電話
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--shu); letter-spacing: 0.3em; margin: 24px 16px 8px; text-transform: uppercase;">— Miyajima Island</h3>
+
+        <div class="spot-list">
+            <!-- まめたぬき -->
+            <div class="spot-card" id="shop-mametanuki">
+                <div class="spot-card-header">
+                    <span class="spot-num">04</span>
+                    <div class="spot-name">穴子と牡蠣<br>まめたぬき</div>
+                    <div class="spot-en">Mametanuki</div>
+                </div>
+                <div class="spot-desc">宮島100年宿「錦水館」直営。陶箱で蒸し上げる独自製法の「蒸し焼きあなごめし」が看板。煮穴子を2尾使い、口の中でとろける柔らかさ。穴子と牡蠣フライの共演セットが人気。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>宮島町1133（表参道商店街中程）</span></div>
+                    <div class="row"><span class="key">営業</span><span>11:00-14:30 / 17:00-20:00</span></div>
+                    <div class="row"><span class="key">名物</span><span>蒸し焼きあなごめし ¥2,300〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=まめたぬき+宮島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="tel:0829442152">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        電話
+                    </a>
+                </div>
+            </div>
+
+            <!-- ふじたや -->
+            <div class="spot-card ai" id="shop-fujitaya">
+                <div class="spot-card-header">
+                    <span class="spot-num">05</span>
+                    <div class="spot-name">ふじたや ★</div>
+                    <div class="spot-en">Fujitaya — Michelin ★</div>
+                </div>
+                <div class="spot-desc">あなごめし御三家のひとつにして、宮島で唯一ミシュラン1つ星★。1匹100〜120gの地物天然穴子のみ使用。ツヤツヤの焼き穴子と薄味のタレで素材の味が際立つ。<br>※開店11時前から並ぶ覚悟が必要。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>宮島町125-2（大願寺裏）</span></div>
+                    <div class="row"><span class="key">営業</span><span>11:00-16:00頃（売切れ次第終了）</span></div>
+                    <div class="row"><span class="key">名物</span><span>あなごめし ¥3,000前後</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=ふじたや+宮島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="tel:0829440151">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        電話
+                    </a>
+                </div>
+            </div>
+
+            <!-- 博多屋 -->
+            <div class="spot-card moegi">
+                <div class="spot-card-header">
+                    <span class="spot-num">06</span>
+                    <div class="spot-name">博多屋</div>
+                    <div class="spot-en">Hakataya</div>
+                </div>
+                <div class="spot-desc">明治創業の老舗もみじ饅頭店。店内にガラス張りの焼き場があり、焼きたてをその場でいただける。無料の緑茶サービスとイートインスペースあり。「揚げもみじ饅頭」も人気。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>宮島町459（表参道商店街）</span></div>
+                    <div class="row"><span class="key">営業</span><span>9:00-17:00</span></div>
+                    <div class="row"><span class="key">名物</span><span>焼きたてもみじ饅頭 ¥130〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=博多屋+宮島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="tel:0829440341">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        電話
+                    </a>
+                </div>
+            </div>
+
+            <!-- 紅葉堂 -->
+            <div class="spot-card kincha" id="shop-momijido">
+                <div class="spot-card-header">
+                    <span class="spot-num">07</span>
+                    <div class="spot-name">紅葉堂 本店</div>
+                    <div class="spot-en">Momijido</div>
+                </div>
+                <div class="spot-desc">100年以上の伝統と進化。「揚げもみじ®」発祥の店。サクサクの衣に包まれた揚げたてのもみじ饅頭は、宮島でしか味わえない名物。あんこ・クリーム・チーズの3種。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>宮島町448-1（嚴島神社近く）</span></div>
+                    <div class="row"><span class="key">営業</span><span>9:00-17:30頃</span></div>
+                    <div class="row"><span class="key">名物</span><span>揚げもみじ ¥200〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=紅葉堂+本店+宮島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="tel:0829442241">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        電話
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--kincha); letter-spacing: 0.3em; margin: 24px 16px 8px; text-transform: uppercase;">— Craft Beer</h3>
+
+        <div class="spot-list">
+            <!-- HIROSHIMA NEIGHBORLY BREWING -->
+            <div class="spot-card kincha" id="shop-hnb">
+                <div class="spot-card-header">
+                    <span class="spot-num">08</span>
+                    <div class="spot-name">HIROSHIMA NEIGHBORLY BREWING<br>クラフトビールと炭火 はればれ</div>
+                    <div class="spot-en">Hiroshima Neighborly Brewing</div>
+                </div>
+                <div class="spot-desc">平和記念公園すぐそば、本通り商店街西側のマイクロブルワリー。アメリカ出身のヘッドブルワーが瀬戸内食材と世界のホップで醸す8〜10種の個性派ビール。三次産生姜の「レディジンジャーペールエール」や「広島日の出ラガー」が名物。併設のブリューパブ「はればれ」で炭火料理とともに。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>中区大手町1-4-1 おりづるタワー向かい</span></div>
+                    <div class="row"><span class="key">営業</span><span>17:00-23:00（日〜22:00／月休）</span></div>
+                    <div class="row"><span class="key">名物</span><span>広島日の出ラガー ¥660〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=HIROSHIMA+NEIGHBORLY+BREWING+広島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="https://hnb.beer/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                        公式
+                    </a>
+                </div>
+            </div>
+
+            <!-- SESSION'S BREWERY -->
+            <div class="spot-card ai" id="shop-sessions">
+                <div class="spot-card-header">
+                    <span class="spot-num">09</span>
+                    <div class="spot-name">SESSION'S BREWERY</div>
+                    <div class="spot-en">Session's Brewery — Local Pioneer</div>
+                </div>
+                <div class="spot-desc">広島地ビールの先駆け的ブルワリー。100〜150Lの小ロットで手間暇かけた一杯を。「オイスターシティスタウト」は牡蠣殻のミネラルでまろやか。「広島レモンエール」は地元産レモン爽やか。和洋どんな料理にも合う「ブルーノラガー」も人気。併設ビアホールあり。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>中区舟入本町8-3</span></div>
+                    <div class="row"><span class="key">営業</span><span>17:00-23:00（日休）</span></div>
+                    <div class="row"><span class="key">名物</span><span>オイスターシティスタウト ¥660〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=セッションズブリュワリー+広島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="https://www.the-sessions.co.jp/sp/brewery/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                        公式
+                    </a>
+                </div>
+            </div>
+
+            <!-- 宮島ブルワリー -->
+            <div class="spot-card moegi" id="shop-miyajima-beer">
+                <div class="spot-card-header">
+                    <span class="spot-num">10</span>
+                    <div class="spot-name">宮島ブルワリー<br>宮島ビール</div>
+                    <div class="spot-en">Miyajima Brewery</div>
+                </div>
+                <div class="spot-desc">宮島表参道商店街の真ん中にある醸造所併設のビアスタンド。宮島の水で醸した「宮島ビール」をその場で。1階スタンドで飲み比べながら食べ歩き、3階レストランで料理とともにじっくり味わうもよし。ペールエール・ヴァイツェン・ピルスナーなど4〜5種が常時ラインアップ。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>廿日市市宮島町459-2（表参道商店街）</span></div>
+                    <div class="row"><span class="key">営業</span><span>11:00-17:00（不定休）</span></div>
+                    <div class="row"><span class="key">名物</span><span>宮島ペールエール ¥700〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=宮島ブルワリー+宮島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="https://miyajima-beer.com/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                        公式
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--ai); letter-spacing: 0.3em; margin: 24px 16px 8px; text-transform: uppercase;">— Hotel Area / ホテル周辺</h3>
+
+        <div class="spot-list">
+            <div class="spot-card ai" id="shop-andersen">
+                <div class="spot-card-header">
+                    <span class="spot-num">11</span>
+                    <div class="spot-name">アンデルセン 広島本店</div>
+                    <div class="spot-en">Andersen Hiroshima</div>
+                </div>
+                <div class="spot-desc">広島を代表する老舗ベーカリー。1Fパン売場は300種以上。2Fカフェでモーニング、7Fレストランで瀬戸内食材のランチ。ホテルから徒歩5分、紙屋町交差点角。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>中区基町7-1（紙屋町交差点）</span></div>
+                    <div class="row"><span class="key">営業</span><span>1F 8:00-21:00／2F 9:00-21:00</span></div>
+                    <div class="row"><span class="key">朝食</span><span>モーニングセット ¥800〜</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=アンデルセン+広島+基町" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="tel:0822472303">
+                        <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                        電話
+                    </a>
+                </div>
+            </div>
+
+            <div class="spot-card" id="shop-okonomimura">
+                <div class="spot-card-header">
+                    <span class="spot-num">12</span>
+                    <div class="spot-name">お好み村</div>
+                    <div class="spot-en">Okonomimura</div>
+                </div>
+                <div class="spot-desc">2〜4Fに25店舗以上が軒を連ねるお好み焼きテーマパーク。各店自慢の味を食べ比べ。ホテルから徒歩約10分、八丁堀エリア。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>中区新天地5-13</span></div>
+                    <div class="row"><span class="key">営業</span><span>店舗により異なる（11:00-深夜中心）</span></div>
+                    <div class="row"><span class="key">予算</span><span>お好み焼き ¥900〜¥1,500</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=お好み村+広島+新天地" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="https://www.okonomimura.jp/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                        公式
+                    </a>
+                </div>
+            </div>
+
+            <div class="spot-card ai" id="shop-orizuru">
+                <div class="spot-card-header">
+                    <span class="spot-num">13</span>
+                    <div class="spot-name">おりづるタワー</div>
+                    <div class="spot-en">Orizuru Tower</div>
+                </div>
+                <div class="spot-desc">原爆ドーム真正面。屋上展望台「ひろしまの丘」から平和記念公園を一望。1Fカフェ＆ショップ。ホテルから徒歩3分。</div>
+                <div class="spot-info">
+                    <div class="row"><span class="key">住所</span><span>中区大手町1-2-1</span></div>
+                    <div class="row"><span class="key">営業</span><span>10:00-18:00（季節変動あり）</span></div>
+                    <div class="row"><span class="key">料金</span><span>展望台 ¥2,200（1F無料）</span></div>
+                </div>
+                <div class="spot-actions">
+                    <a href="https://www.google.com/maps/search/?api=1&query=おりづるタワー+広島" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        マップ
+                    </a>
+                    <a href="https://www.orizurutower.com/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                        公式
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider">⁂</div>
+
+    <!-- ============ マイ情報 ============ -->
+    <section id="info" class="block">
+        <div class="section-head">
+            <span class="section-num">07</span>
+            <h2 class="section-title">
+                <span>旅の手帖</span>
+                <span class="en">Travel Notes</span>
+            </h2>
+        </div>
+
+        <!-- 宿 -->
+        <details class="collapse" open>
+            <summary><span><span class="icon">STAY</span>宿泊先</span></summary>
+            <div class="collapse-body">
+                <div class="info-row"><span class="key">ホテル名</span><span class="val">ANAクラウンプラザ広島</span></div>
+                <div class="info-row"><span class="key">住所</span><span class="val">広島市中区中町7-20</span></div>
+                <div class="info-row"><span class="key">電話</span><span class="val"><a href="tel:0822411111">082-241-1111</a></span></div>
+                <div class="info-row"><span class="key">チェックイン</span><span class="val">15:00</span></div>
+                <div class="info-row"><span class="key">チェックアウト</span><span class="val">11:00</span></div>
+                <div class="info-row"><span class="key">朝食</span><span class="val">Café in the Park（ブッフェ）</span></div>
+                <div style="margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <a href="https://www.google.com/maps/search/?api=1&query=ANAクラウンプラザホテル広島" target="_blank" rel="noopener" style="background: var(--ai); color: var(--washi); padding: 14px; text-align: center; text-decoration: none; border-radius: 10px; font-size: 15px; font-weight: 600;">マップで開く</a>
+                    <a href="tel:0822411111" style="background: var(--shu); color: var(--washi); padding: 14px; text-align: center; text-decoration: none; border-radius: 10px; font-size: 15px; font-weight: 600;">電話する</a>
+                </div>
+            </div>
+        </details>
+
+        <!-- 交通 -->
+        <details class="collapse">
+            <summary><span><span class="icon">MOVE</span>交通・運賃</span></summary>
+            <div class="collapse-body">
+                <div class="info-row"><span class="key">新幹線</span><span class="val">豊橋⇔広島 自由席片道 約¥14,200</span></div>
+                <div class="info-row"><span class="key">路面電車</span><span class="val">市内均一 ¥240／1日券 ¥700</span></div>
+                <div class="info-row"><span class="key">世界遺産航路</span><span class="val">片道 大人¥2,400（要予約推奨）</span></div>
+                <div class="info-row"><span class="key">JRフェリー</span><span class="val">宮島口⇔宮島 片道¥200・約10分</span></div>
+                <div class="info-row"><span class="key">嚴島神社</span><span class="val">拝観料 大人¥300</span></div>
+                <div class="info-row"><span class="key">平和資料館</span><span class="val">入館料 大人¥200</span></div>
+            </div>
+        </details>
+
+        <!-- 持ち物チェック -->
+        <details class="collapse">
+            <summary><span><span class="icon">PACK</span>持ち物チェックリスト</span></summary>
+            <div class="collapse-body" style="padding: 0 18px 18px;">
+                <ul class="checklist" id="packing-list">
+                    <li>新幹線チケット（往復）</li>
+                    <li>ホテル予約確認書</li>
+                    <li>身分証明書</li>
+                    <li>歩きやすい靴（宮島は石畳・坂道あり）</li>
+                    <li>羽織れる薄手の上着（船上は冷える）</li>
+                    <li>折り畳み傘 or レインウェア</li>
+                    <li>日焼け止め・帽子（瀬戸内の日差し）</li>
+                    <li>モバイルバッテリー</li>
+                    <li>世界遺産航路の予約番号</li>
+                    <li>カメラ／スマホの容量確認</li>
+                    <li>常備薬・絆創膏</li>
+                    <li>お土産用のサブバッグ</li>
+                </ul>
+                <div style="font-family: 'Noto Sans JP'; font-size: 12.5px; color: #888; margin-top: 10px; text-align: center;">タップで✓・このページを閉じるとリセット</div>
+            </div>
+        </details>
+
+        <!-- お土産メモ -->
+        <details class="collapse">
+            <summary><span><span class="icon">GIFTS</span>お土産メモ</span></summary>
+            <div class="collapse-body" style="padding: 0 18px 18px;">
+                <ul class="checklist" id="souvenir-list">
+                    <li>もみじ饅頭（博多屋・藤い屋・にしき堂）</li>
+                    <li>生もみじ（にしき堂）</li>
+                    <li>瀬戸内レモンケーキ</li>
+                    <li>地酒（賀茂鶴・雨後の月）</li>
+                    <li>あなご飯弁当（うえの）</li>
+                    <li>かき醤油・牡蠣の佃煮</li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- 気候 -->
+        <details class="collapse">
+            <summary><span><span class="icon">WEATHER</span>5月下旬の広島の気候</span></summary>
+            <div class="collapse-body">
+                <div style="font-family: 'Noto Sans JP'; font-size: 14px; line-height: 1.9;">
+                    平均気温：最高24℃／最低15℃前後<br><br>
+                    梅雨入り前の比較的爽やかな季節ですが、瀬戸内は急な雨もあるため折り畳み傘は必携。日中は半袖でも快適、朝晩や船上では薄手の長袖が欲しくなります。
+                </div>
+            </div>
+        </details>
+    </section>
+
+    <!-- ============ フッター ============ -->
+    <footer class="footer">
+        <div class="footer-mark">SETOUCHI JOURNEY</div>
+        <div class="footer-quote">
+            海に浮かぶ朱の鳥居。<br>
+            川面に映る祈り。<br>
+            <span class="red">忘れえぬ二日間。</span>
+        </div>
+        <div class="footer-end">BON VOYAGE</div>
+    </footer>
+</main>
+
+<!-- ============ 固定下部ナビ ============ -->
+<nav class="bottom-bar">
+    <a href="#today">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        今
+    </a>
+    <a href="#day1">
+        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+        DAY1
+    </a>
+    <a href="#day2">
+        <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+        DAY2
+    </a>
+    <a href="#map-hiroshima">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        地図
+    </a>
+    <a href="#food">
+        <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
+        グルメ
+    </a>
+    <a href="#info">
+        <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+        情報
+    </a>
+</nav>
+
+<script>
+// ============ 「今の予定」を動的表示 ============
+(function() {
+    // 旅行日程
+    const TRIP_DAYS = {
+        '2026-05-26': 1,
+        '2026-05-27': 2
+    };
+
+    // 全予定（時刻→詳細）
+    function getAllScheduleItems() {
+        const items = [];
+        document.querySelectorAll('.timeline').forEach(tl => {
+            const day = parseInt(tl.dataset.day, 10);
+            tl.querySelectorAll('.tl-item').forEach(item => {
+                const time = item.dataset.time;
+                const title = item.querySelector('.tl-title').childNodes[0].textContent.trim();
+                const desc = item.querySelector('.tl-desc').textContent.trim();
+                items.push({day, time, title, desc, el: item});
+            });
+        });
+        return items;
+    }
+
+    // 現在時刻に該当する/最も近い予定を見つける
+    function findCurrentAndNext() {
+        const now = new Date();
+        const todayStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+        const tripDay = TRIP_DAYS[todayStr];
+        const items = getAllScheduleItems();
+
+        if (!tripDay) {
+            // 旅行期間外（旅行前 or 旅行後）
+            const today = new Date();
+            const tripStart = new Date('2026-05-26T00:00:00');
+            const tripEnd = new Date('2026-05-28T00:00:00');
+            if (today < tripStart) {
+                const daysLeft = Math.ceil((tripStart - today) / (1000 * 60 * 60 * 24));
+                return { mode: 'before', daysLeft };
+            } else {
+                return { mode: 'after' };
+            }
+        }
+
+        // 旅行中：今日のアイテムだけに絞る
+        const todayItems = items.filter(i => i.day === tripDay);
+        const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+        let current = null, next = null;
+        for (let i = 0; i < todayItems.length; i++) {
+            const [h, m] = todayItems[i].time.split(':').map(Number);
+            const itemMinutes = h * 60 + m;
+            const nextItem = todayItems[i + 1];
+            const nextMinutes = nextItem ? (() => {
+                const [h2, m2] = nextItem.time.split(':').map(Number);
+                return h2 * 60 + m2;
+            })() : Infinity;
+
+            if (nowMinutes >= itemMinutes && nowMinutes < nextMinutes) {
+                current = todayItems[i];
+                next = todayItems[i + 1] || null;
+                break;
+            }
+        }
+
+        if (!current && nowMinutes < (() => {
+            const [h, m] = todayItems[0].time.split(':').map(Number);
+            return h * 60 + m;
+        })()) {
+            // 1日の最初の予定の前
+            return { mode: 'morning', next: todayItems[0], tripDay };
+        }
+
+        if (current) {
+            return { mode: 'current', current, next, tripDay };
+        }
+
+        return { mode: 'evening', tripDay };
+    }
+
+    function render() {
+        const container = document.getElementById('now-card-container');
+        const status = findCurrentAndNext();
+        let html = '';
+
+        if (status.mode === 'before') {
+            html = `
+                <div class="now-card">
+                    <div class="now-label">COUNTDOWN</div>
+                    <div class="now-time">${status.daysLeft}<span style="font-size: 16px; margin-left: 6px;">日後</span></div>
+                    <div class="now-title">旅まで、もうすぐ</div>
+                    <div class="now-desc">5月26日（火）朝7:20、豊橋発。準備リストの確認はお済みですか？</div>
+                    <div class="now-next">
+                        <strong>NEXT:</strong> 5/26 07:20 — 豊橋駅出発
+                    </div>
+                </div>`;
+        } else if (status.mode === 'after') {
+            html = `
+                <div class="now-card">
+                    <div class="now-label">JOURNEY ENDED</div>
+                    <div class="now-title">お疲れさまでした</div>
+                    <div class="now-desc">瀬戸内の風と、朱の鳥居。素敵な旅の記憶が残りますように。</div>
+                </div>`;
+        } else if (status.mode === 'morning') {
+            html = `
+                <div class="now-card">
+                    <div class="now-label">DAY ${status.tripDay} — MORNING</div>
+                    <div class="now-title">おはようございます</div>
+                    <div class="now-desc">今日のスタートまで、もう少し。</div>
+                    <div class="now-next">
+                        <strong>NEXT:</strong> ${status.next.time} — ${status.next.title}
+                    </div>
+                </div>`;
+        } else if (status.mode === 'evening') {
+            html = `
+                <div class="now-card">
+                    <div class="now-label">DAY ${status.tripDay} — EVENING</div>
+                    <div class="now-title">今日の予定は完了</div>
+                    <div class="now-desc">お疲れさまでした。ゆっくりとお休みください。</div>
+                </div>`;
+        } else {
+            // current
+            const c = status.current;
+            const n = status.next;
+            // 該当アイテムにcurrentクラスを付与
+            document.querySelectorAll('.tl-item').forEach(el => el.classList.remove('current'));
+            c.el.classList.add('current');
+
+            html = `
+                <div class="now-card">
+                    <div class="now-label">DAY ${status.tripDay} — NOW</div>
+                    <div class="now-time">${c.time}</div>
+                    <div class="now-title">${c.title}</div>
+                    <div class="now-desc">${c.desc.substring(0, 100)}${c.desc.length > 100 ? '…' : ''}</div>
+                    ${n ? `<div class="now-next"><strong>NEXT:</strong> ${n.time} — ${n.title}</div>` : ''}
+                </div>`;
+        }
+
+        container.innerHTML = html;
+    }
+
+    // 初回 + 1分ごとに更新
+    render();
+    setInterval(render, 60 * 1000);
+})();
+
+// ============ チェックリストのトグル ============
+document.querySelectorAll('.checklist li').forEach(li => {
+    li.addEventListener('click', () => {
+        li.classList.toggle('checked');
+    });
+});
+
+// ============ ナビタブのactive切替 ============
+const tabs = document.querySelectorAll('.nav-tab');
+const sections = ['today', 'day1', 'day2', 'map-hiroshima', 'map-miyajima', 'food', 'info']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+function updateActiveTab() {
+    const scrollY = window.scrollY + 100;
+    let currentId = sections[0].id;
+    for (const sec of sections) {
+        if (sec.offsetTop <= scrollY) {
+            currentId = sec.id;
+        }
+    }
+    tabs.forEach(t => {
+        t.classList.toggle('active', t.getAttribute('href') === '#' + currentId);
+        // タブ自体を中央にスクロール
+        if (t.classList.contains('active')) {
+            const navTabs = document.querySelector('.nav-tabs');
+            const tabLeft = t.offsetLeft;
+            const tabWidth = t.offsetWidth;
+            const navWidth = navTabs.offsetWidth;
+            navTabs.scrollTo({
+                left: tabLeft - navWidth / 2 + tabWidth / 2,
+                behavior: 'smooth'
+            });
+        }
+    });
+}
+
+let scrollTicking = false;
+window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+        window.requestAnimationFrame(() => {
+            updateActiveTab();
+            scrollTicking = false;
+        });
+        scrollTicking = true;
+    }
+});
+
+// スムーズスクロール（固定ヘッダーの高さを考慮）
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+            e.preventDefault();
+            const navHeight = document.querySelector('.nav-tabs').offsetHeight;
+            const rect = target.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetY = rect.top + scrollTop - navHeight - 12;
+            window.scrollTo({
+                top: targetY,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ============ SVGマップのリンクをモバイル対応 ============
+// SVG内の<a>はモバイルでポップアップブロックされるためJSで処理
+(function() {
+    document.querySelectorAll('svg.map a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const w = window.open(href, '_blank', 'noopener');
+            if (!w) window.location.href = href;
+        });
+    });
+})();
+</script>
+</body>
+</html>
