@@ -845,6 +845,152 @@ svg.map a:active circle, svg.map a:active rect { opacity: 0.6; }
     border-top: 1px solid rgba(255,255,255,0.2);
 }
 
+/* ============ 天気ウィジェット ============ */
+.weather-glance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 0 16px;
+}
+.weather-day {
+    display: block;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 12px 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+.weather-day:hover, .weather-day:active {
+    background: rgba(255,255,255,0.95);
+    border-color: var(--shu);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+.weather-day .wd-more {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 10px;
+    color: var(--kincha);
+    margin-top: 6px;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.weather-day:hover .wd-more {
+    opacity: 1;
+}
+.weather-day .wd-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--kincha);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+}
+.weather-day .wd-icon {
+    font-size: 34px;
+    margin: 4px 0 2px;
+    line-height: 1.1;
+}
+.weather-day .wd-desc {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ai-deep);
+    margin-bottom: 2px;
+}
+.weather-day .wd-temp {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--sumi);
+    margin-bottom: 4px;
+}
+.weather-day .wd-temp .lo {
+    color: #999;
+    font-size: 15px;
+    margin-left: 4px;
+}
+.weather-day .wd-rain {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    color: var(--shu);
+    font-weight: 500;
+}
+
+/* 時間別スクロール */
+.hourly-row {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 12px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.hourly-row::-webkit-scrollbar { display: none; }
+
+.hourly-cell {
+    flex-shrink: 0;
+    width: 60px;
+    text-align: center;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--line-soft);
+    border-radius: 10px;
+    padding: 10px 4px;
+}
+.hourly-cell .hc-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: var(--kincha);
+    margin-bottom: 4px;
+}
+.hourly-cell .hc-icon {
+    font-size: 20px;
+    margin: 2px 0;
+    line-height: 1.1;
+}
+.hourly-cell .hc-temp {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--sumi);
+    margin: 2px 0;
+}
+.hourly-cell .hc-rain {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11px;
+    color: var(--shu);
+    font-weight: 500;
+}
+
+.weather-day-header {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--shu);
+    letter-spacing: 0.2em;
+    margin: 14px 0 6px;
+    padding-left: 4px;
+    font-weight: 600;
+}
+
+.weather-error {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+}
+.weather-loading {
+    text-align: center;
+    padding: 24px;
+    color: var(--kincha);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+}
+
 /* ============ メディアクエリ（狭い画面） ============ */
 @media (max-width: 360px) {
     body { font-size: 15px; }
@@ -909,6 +1055,7 @@ a { color: var(--ai-deep); }
         <a href="#today" class="nav-tab active">今日の予定</a>
         <a href="#day1" class="nav-tab">DAY 1</a>
         <a href="#day2" class="nav-tab">DAY 2</a>
+        <a href="#weather-collapse" class="nav-tab">天気</a>
         <a href="#map-hiroshima" class="nav-tab">広島マップ</a>
         <a href="#map-miyajima" class="nav-tab">宮島マップ</a>
         <a href="#food" class="nav-tab">グルメ</a>
@@ -925,6 +1072,9 @@ a { color: var(--ai-deep); }
             </h2>
         </div>
         <div id="now-card-container">
+             <!-- JSで埋める -->
+        </div>
+        <div id="weather-glance-container" style="margin-top: 14px;">
              <!-- JSで埋める -->
         </div>
     </section>
@@ -1916,13 +2066,12 @@ a { color: var(--ai-deep); }
             </div>
         </details>
 
-        <!-- 気候 -->
-        <details class="collapse">
-            <summary><span><span class="icon">WEATHER</span>5月下旬の広島の気候</span></summary>
-            <div class="collapse-body">
-                <div style="font-family: 'Noto Sans JP'; font-size: 14px; line-height: 1.9;">
-                    平均気温：最高24℃／最低15℃前後<br><br>
-                    梅雨入り前の比較的爽やかな季節ですが、瀬戸内は急な雨もあるため折り畳み傘は必携。日中は半袖でも快適、朝晩や船上では薄手の長袖が欲しくなります。
+        <!-- 天気予報 -->
+        <details class="collapse" id="weather-collapse" open>
+            <summary><span><span class="icon">WEATHER</span>天気予報</span></summary>
+            <div class="collapse-body" style="padding: 10px 0 0;">
+                <div id="weather-detail-container" style="font-family: 'Noto Sans JP'; font-size: 14px; line-height: 1.9; padding: 0 18px 18px;">
+                    <div class="weather-loading">天気データを取得中...</div>
                 </div>
             </div>
         </details>
@@ -1961,6 +2110,10 @@ a { color: var(--ai-deep); }
     <a href="#food">
         <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
         グルメ
+    </a>
+    <a href="#weather-collapse">
+        <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+        天気
     </a>
     <a href="#info">
         <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
@@ -2194,6 +2347,188 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
             if (!w) window.location.href = href;
         });
     });
+})();
+
+// ============ 天気予報（Open-Meteo API） ============
+(function() {
+    const HIROSHIMA_LAT = 34.3966;
+    const HIROSHIMA_LON = 132.4596;
+    const TRIP_DATES = ['2026-05-26', '2026-05-27'];
+    const TRIP_LABELS = { '2026-05-26': '5/26 (火)', '2026-05-27': '5/27 (水)' };
+    const CACHE_KEY = 'weather_cache_v2';
+    const CACHE_DURATION = 30 * 60 * 1000;
+
+    // WMO weather codes → { emoji, 日本語 }
+    const WMO = {
+        0:  { e: '☀️',  d: '快晴' },
+        1:  { e: '🌤️', d: '晴れ' },
+        2:  { e: '⛅',  d: '薄曇り' },
+        3:  { e: '☁️',  d: '曇り' },
+        45: { e: '🌫️', d: '霧' },
+        48: { e: '🌫️', d: '着氷性霧' },
+        51: { e: '🌧️', d: '霧雨' },
+        53: { e: '🌧️', d: '霧雨' },
+        55: { e: '🌧️', d: '霧雨' },
+        61: { e: '🌧️', d: '小雨' },
+        63: { e: '🌧️', d: '雨' },
+        65: { e: '🌧️', d: '強い雨' },
+        71: { e: '❄️', d: '小雪' },
+        73: { e: '❄️', d: '雪' },
+        75: { e: '❄️', d: '大雪' },
+        80: { e: '🌦️', d: 'にわか雨' },
+        81: { e: '🌦️', d: 'にわか雨' },
+        82: { e: '🌧️', d: '激しい雨' },
+        95: { e: '⛈️', d: '雷雨' },
+        96: { e: '⛈️', d: '雷雨・雹' },
+        99: { e: '⛈️', d: '激しい雷雨' }
+    };
+
+    function getWeather(code) {
+        return WMO[code] || { e: '🌤️', d: '不明' };
+    }
+
+    async function fetchWeather() {
+        const cached = sessionStorage.getItem(CACHE_KEY);
+        if (cached) {
+            const parsed = JSON.parse(cached);
+            if (Date.now() - parsed.t < CACHE_DURATION) return parsed.data;
+        }
+
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${HIROSHIMA_LAT}&longitude=${HIROSHIMA_LON}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&hourly=temperature_2m,precipitation_probability,weather_code&timezone=Asia%2FTokyo&forecast_days=7`;
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('API fetch failed');
+        const data = await res.json();
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), data }));
+        return data;
+    }
+
+    function buildDailyMap(data) {
+        const map = {};
+        const times = data.daily.time;
+        for (let i = 0; i < times.length; i++) {
+            map[times[i]] = {
+                tempMax: data.daily.temperature_2m_max[i],
+                tempMin: data.daily.temperature_2m_min[i],
+                rainMax: data.daily.precipitation_probability_max[i],
+                code: data.daily.weather_code[i]
+            };
+        }
+        return map;
+    }
+
+    function buildHourlyMap(data) {
+        const map = {};
+        const times = data.hourly.time;
+        for (let i = 0; i < times.length; i++) {
+            const dateHour = times[i];
+            const date = dateHour.substring(0, 10);
+            if (!map[date]) map[date] = [];
+            map[date].push({
+                time: dateHour.substring(11, 16),
+                temp: data.hourly.temperature_2m[i],
+                rain: data.hourly.precipitation_probability[i],
+                code: data.hourly.weather_code[i]
+            });
+        }
+        return map;
+    }
+
+    function renderGlance(dailyMap) {
+        const container = document.getElementById('weather-glance-container');
+        if (!container) return;
+
+        const dates = TRIP_DATES.filter(d => dailyMap[d]);
+        if (dates.length === 0) return;
+
+        let html = '<div class="weather-glance">';
+        for (const d of dates) {
+            const w = dailyMap[d];
+            const wx = getWeather(w.code);
+            html += `
+                <a href="#weather-collapse" class="weather-day" onclick="document.getElementById('weather-collapse').open = true">
+                    <div class="wd-label">${TRIP_LABELS[d] || d}</div>
+                    <div class="wd-icon">${wx.e}</div>
+                    <div class="wd-desc">${wx.d}</div>
+                    <div class="wd-temp">${Math.round(w.tempMax)}<span class="lo">/${Math.round(w.tempMin)}℃</span></div>
+                    <div class="wd-rain">☔ 降水確率 ${w.rainMax}%</div>
+                    <div class="wd-more">タップで詳細 ▸</div>
+                </a>`;
+        }
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    function renderDetail(dailyMap, hourlyMap) {
+        const container = document.getElementById('weather-detail-container');
+        if (!container) return;
+
+        const dates = TRIP_DATES.filter(d => dailyMap[d] && hourlyMap[d]);
+        if (dates.length === 0) {
+            container.innerHTML = '<div class="weather-error">天気予報データが取得できませんでした。<br>5月下旬の広島：最高24℃／最低15℃前後。折り畳み傘を必携ください。</div>';
+            return;
+        }
+
+        let html = '';
+
+        for (let di = 0; di < dates.length; di++) {
+            const d = dates[di];
+            const w = dailyMap[d];
+            const wx = getWeather(w.code);
+            const hours = hourlyMap[d];
+
+            // 日の出〜日没の時間帯だけ表示（6時〜21時）
+            const dayHours = hours.filter(h => {
+                const hour = parseInt(h.time.split(':')[0], 10);
+                return hour >= 6 && hour <= 21;
+            });
+
+            html += `<div class="weather-day-header">━━ ${TRIP_LABELS[d]}　${wx.e} ${wx.d}　${Math.round(w.tempMax)}/${Math.round(w.tempMin)}℃　降水 max ${w.rainMax}%</div>`;
+
+            html += '<div class="hourly-row">';
+            for (const h of dayHours) {
+                const hx = getWeather(h.code);
+                const rainClass = h.rain >= 50 ? ' style="color: var(--shu); font-weight: 700;"' : (h.rain >= 20 ? ' style="color: var(--shu);"' : '');
+                html += `
+                    <div class="hourly-cell">
+                        <div class="hc-time">${h.time}</div>
+                        <div class="hc-icon">${hx.e}</div>
+                        <div class="hc-temp">${Math.round(h.temp)}°</div>
+                        <div class="hc-rain"${rainClass}>${h.rain}%</div>
+                    </div>`;
+            }
+            html += '</div>';
+
+            if (di < dates.length - 1) {
+                html += '<div style="height: 4px;"></div>';
+            }
+        }
+
+        container.innerHTML = html;
+    }
+
+    async function initWeather() {
+        try {
+            const data = await fetchWeather();
+            const dailyMap = buildDailyMap(data);
+            const hourlyMap = buildHourlyMap(data);
+            renderGlance(dailyMap);
+            renderDetail(dailyMap, hourlyMap);
+        } catch (e) {
+            const detail = document.getElementById('weather-detail-container');
+            if (detail) {
+                detail.innerHTML = '<div class="weather-error">天気データを取得できませんでした（通信エラー）。<br>5月下旬の広島：最高24℃／最低15℃前後。折り畳み傘を必携ください。</div>';
+            }
+            const glance = document.getElementById('weather-glance-container');
+            if (glance) {
+                glance.innerHTML = '';
+            }
+        }
+    }
+
+    initWeather();
+    // 30分ごとに更新
+    setInterval(initWeather, 30 * 60 * 1000);
 })();
 </script>
 </body>
