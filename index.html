@@ -415,6 +415,21 @@ section.block {
     font-weight: 600;
     letter-spacing: 0.02em;
 }
+.tl-wx {
+    position: absolute;
+    left: 0; top: 42px;
+    width: 52px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 11px;
+    color: var(--kincha);
+    line-height: 1;
+}
+.tl-wx .wx-emoji { font-size: 12px; line-height: 1; }
+.tl-wx .wx-temp { font-family: 'Cormorant Garamond', serif; font-size: 11px; color: var(--sumi); }
+.tl-wx .wx-rain { font-size: 10px; }
+.tl-wx .wx-rain.hi { color: var(--shu); font-weight: 700; }
 .tl-dot {
     position: absolute;
     left: 58px; top: 22px;
@@ -642,6 +657,57 @@ svg.map a:active circle, svg.map a:active rect { opacity: 0.6; }
     letter-spacing: 0.05em;
 }
 .tip-box.shu .tip-title { color: var(--shu-deep); }
+
+/* 各日の天気サマリー */
+.day-weather {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 6px 16px 0;
+    background: rgba(255,255,255,0.65);
+    border: 1px solid var(--line-soft);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--sumi);
+}
+.day-weather .dw-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+.day-weather .dw-info {
+    flex: 1;
+}
+.day-weather .dw-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    color: var(--kincha);
+    letter-spacing: 0.1em;
+}
+.day-weather .dw-desc {
+    font-weight: 600;
+    color: var(--ai-deep);
+}
+.day-weather .dw-stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 2px;
+    font-size: 13px;
+    color: #666;
+}
+.day-weather .dw-stats strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--sumi);
+    font-weight: 600;
+}
+.day-weather .dw-stats .rain-high {
+    color: var(--shu);
+    font-weight: 700;
+}
 .tip-content {
     font-family: 'Noto Sans JP', sans-serif;
     font-size: 14px;
@@ -1074,9 +1140,6 @@ a { color: var(--ai-deep); }
         <div id="now-card-container">
              <!-- JSで埋める -->
         </div>
-        <div id="weather-glance-container" style="margin-top: 14px;">
-             <!-- JSで埋める -->
-        </div>
     </section>
 
     <!-- ============ DAY 1 ============ -->
@@ -1094,6 +1157,8 @@ a { color: var(--ai-deep); }
             <span class="day-date">5月26日（火）<br>豊橋 → 広島</span>
         </div>
 
+        <div class="day-weather" id="day1-weather"></div>
+
         <div class="timeline" data-day="1">
             <div class="tl-item" data-time="07:20">
                 <span class="tl-time">07:20</span>
@@ -1109,11 +1174,22 @@ a { color: var(--ai-deep); }
             <div class="tl-item" data-time="11:00">
                 <span class="tl-time">11:00</span>
                 <span class="tl-dot move"></span>
-                <div class="tl-title">広島駅 到着</div>
-                <div class="tl-desc">広島駅南口より広島電鉄（路面電車）で平和記念公園方面へ。「原爆ドーム前」または「紙屋町」下車。</div>
+                <div class="tl-title">広島駅 到着 → ホテルへ<span class="tl-tag move">Move</span></div>
+                <div class="tl-desc">広島駅南口より広島電鉄（路面電車）「袋町」または「中町」方面へ。まずホテルに荷物を預けて身軽に。所要約15〜20分、運賃¥240。</div>
                 <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=広島駅" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
                     広島駅マップ
+                </a>
+            </div>
+
+            <div class="tl-item" data-time="11:30">
+                <span class="tl-time">11:30</span>
+                <span class="tl-dot move"></span>
+                <div class="tl-title">ホテル到着・荷物預け<span class="tl-tag move">Store</span></div>
+                <div class="tl-desc">ANAクラウンプラザ広島のフロントでチェックイン前に荷物を預ける。スーツケースなど大きな荷物も預かり可能。身軽になって観光へ。</div>
+                <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=ANAクラウンプラザホテル広島" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    ホテルマップ
                 </a>
             </div>
 
@@ -1121,7 +1197,7 @@ a { color: var(--ai-deep); }
                 <span class="tl-time">12:00</span>
                 <span class="tl-dot"></span>
                 <div class="tl-title">広島お好み焼きランチ<span class="tl-tag eat">Eat</span></div>
-                <div class="tl-desc">広島に着いたらまずはこれ。「みっちゃん総本店 八丁堀本店」で本場のお好み焼きを。鉄板の前でじっくり焼き上がりを待つ。</div>
+                <div class="tl-desc">ホテルから徒歩圏。「みっちゃん総本店 八丁堀本店」で本場のお好み焼きを。鉄板の前でじっくり焼き上がりを待つ。</div>
                 <a class="tl-action" href="#shop-mitchan">
                     <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
                     詳しく見る
@@ -1219,12 +1295,19 @@ a { color: var(--ai-deep); }
             <div class="tip-content">干潮 <strong>6:14</strong> / <strong>18:43</strong>　満潮 <strong>12:11頃</strong><br>お昼前後は満潮、社殿が海に浮かぶ姿が見られる絶好のタイミング。</div>
         </div>
 
+        <div class="day-weather" id="day2-weather"></div>
+
+        <div class="tip-box" style="margin-top: 16px;">
+            <div class="tip-title">▎ 宮島 コインロッカー情報</div>
+            <div class="tip-content">宮島桟橋（宮島側）にコインロッカーあり。<strong>JRフェリー乗り場</strong>そばに大型ロッカー（¥500〜¥700/回）。松大汽船乗り場にも設置。高さのある荷物は台数が少ないため早めの確保を推奨。<br>また、桟橋そばの「<strong>宮島荷物預かり所</strong>」では有人手荷物預かり（1個 ¥500/日　8:30〜17:00）あり。スーツケース等の大きな荷物も安心。</div>
+        </div>
+
         <div class="timeline" data-day="2">
             <div class="tl-item" data-time="07:00">
                 <span class="tl-time">07:00</span>
                 <span class="tl-dot"></span>
-                <div class="tl-title">ホテルにて朝食</div>
-                <div class="tl-desc">ANAクラウンプラザのレストラン「Café in the Park」の朝食ブッフェ。瀬戸内の食材も並ぶ。または徒歩5分のアンデルセンでモーニングも。</div>
+                <div class="tl-title">ホテルにて朝食・チェックアウト</div>
+                <div class="tl-desc">ANAクラウンプラザのレストラン「Café in the Park」の朝食ブッフェ。瀬戸内の食材も並ぶ。または徒歩5分のアンデルセンでモーニングも。食後チェックアウト、荷物を持って出発。</div>
                 <a class="tl-action" href="#shop-andersen">
                     <svg viewBox="0 0 24 24"><path d="M8.1 13.34l2.83-2.83L3.91 3.5a4.008 4.008 0 0 0 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/></svg>
                     アンデルセン
@@ -1235,7 +1318,7 @@ a { color: var(--ai-deep); }
                 <span class="tl-time">08:30</span>
                 <span class="tl-dot move"></span>
                 <div class="tl-title">ホテル出発 → 元安桟橋へ<span class="tl-tag move">Walk</span></div>
-                <div class="tl-desc">ホテルから元安桟橋まで徒歩約10〜12分。原爆ドームの南側、元安橋のたもとに乗り場あり。目印は「カフェ ポンテ」。</div>
+                <div class="tl-desc">ホテルから元安桟橋まで徒歩約10〜12分。荷物を持って移動（宮島でコインロッカー利用）。原爆ドームの南側、元安橋のたもとに乗り場あり。目印は「カフェ ポンテ」。</div>
                 <a class="tl-action" href="https://www.google.com/maps/search/?api=1&query=元安桟橋+広島" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
                     元安橋マップ
@@ -1256,8 +1339,8 @@ a { color: var(--ai-deep); }
             <div class="tl-item" data-time="10:15">
                 <span class="tl-time">10:15</span>
                 <span class="tl-dot"></span>
-                <div class="tl-title">宮島 到着・表参道商店街へ<span class="tl-tag see">See</span></div>
-                <div class="tl-desc">宮島3号桟橋から徒歩で表参道へ。鹿に出会いながら、海岸沿いをのんびり歩く。</div>
+                <div class="tl-title">宮島 到着・荷物を預ける<span class="tl-tag move">Store</span></div>
+                <div class="tl-desc">宮島3号桟橋から徒歩で表参道へ。まず桟橋そばのコインロッカーまたは荷物預かり所で荷物を預ける。鹿に出会いながら、海岸沿いをのんびり歩く。</div>
             </div>
 
             <div class="tl-item" data-time="10:30">
@@ -2052,17 +2135,44 @@ a { color: var(--ai-deep); }
         </details>
 
         <!-- お土産メモ -->
-        <details class="collapse">
+        <details class="collapse" open>
             <summary><span><span class="icon">GIFTS</span>お土産メモ</span></summary>
             <div class="collapse-body" style="padding: 0 18px 18px;">
-                <ul class="checklist" id="souvenir-list">
-                    <li>もみじ饅頭（博多屋・藤い屋・にしき堂）</li>
-                    <li>生もみじ（にしき堂）</li>
-                    <li>瀬戸内レモンケーキ</li>
-                    <li>地酒（賀茂鶴・雨後の月）</li>
-                    <li>あなご飯弁当（うえの）</li>
-                    <li>かき醤油・牡蠣の佃煮</li>
-                </ul>
+                <div style="margin-bottom: 14px; padding: 10px 14px; background: rgba(185,74,59,0.06); border-radius: 8px; font-size: 14px; line-height: 1.75;">
+                    <strong style="color: var(--shu);">メインは帰路直前・広島駅「ekie」で。</strong>駅ビル内に広島みやげが勢揃い。冷蔵品（生もみじ・あなご飯）は保冷バッグで持ち帰り。コンビニで購入可。
+                </div>
+                <div style="margin-bottom: 14px;">
+                    <h4 style="font-size: 14px; color: var(--shu); margin-bottom: 8px;">✦ 広島駅 ekie で買う — 帰路の電車待ちに</h4>
+                    <ul class="checklist" id="souvenir-ekie">
+                        <li>もみじ饅頭（にしき堂・藤い屋・博多屋）</li>
+                        <li>生もみじ（にしき堂／冷蔵・賞味期限3日）</li>
+                        <li>瀬戸内レモンケーキ（マルシェ）</li>
+                        <li>地酒（賀茂鶴・雨後の月・亀齢）</li>
+                        <li>あなご飯弁当（うえの／改札内で購入可）</li>
+                        <li>かき醤油・牡蠣の佃煮</li>
+                        <li>広島菜漬け</li>
+                        <li>尾道ラーメン（お土産用）</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 14px;">
+                    <h4 style="font-size: 14px; color: var(--ai); margin-bottom: 8px;">✦ 宮島で買う — 旅の途中で</h4>
+                    <ul class="checklist" id="souvenir-miyajima">
+                        <li>焼きたてもみじ饅頭（博多屋・紅葉堂）→ その場で</li>
+                        <li>宮島しゃもじ（縁起物・小サイズがお土産に◎）</li>
+                        <li>宮島ビール（宮島ブルワリー／瓶販売あり）</li>
+                        <li>杓子せんべい・もみじ天ぷら</li>
+                        <li>表参道で食べ歩き（揚げもみじ・焼き牡蠣）→ 思い出</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-size: 14px; color: var(--kincha); margin-bottom: 8px;">✦ 街中で買う — 余裕があれば（本通り・八丁堀）</h4>
+                    <ul class="checklist" id="souvenir-city">
+                        <li>広島レモンサイダー・レモンジャム</li>
+                        <li>広島ローカル文具・雑貨（本通り商店街）</li>
+                        <li>地元クラフトビール瓶（HNB・セッションズ）</li>
+                    </ul>
+                </div>
+                <div style="font-family: 'Noto Sans JP'; font-size: 12px; color: #888; margin-top: 14px; text-align: center;">タップで✓・冷蔵品は保冷バッグ必須</div>
             </div>
         </details>
 
@@ -2459,6 +2569,66 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         container.innerHTML = html;
     }
 
+    function renderDayWeather(dailyMap) {
+        const dateIds = { '2026-05-26': 'day1-weather', '2026-05-27': 'day2-weather' };
+
+        for (const [date, id] of Object.entries(dateIds)) {
+            const el = document.getElementById(id);
+            if (!el || !dailyMap[date]) continue;
+
+            const w = dailyMap[date];
+            const wx = getWeather(w.code);
+            const rainClass = w.rainMax >= 50 ? ' rain-high' : '';
+
+            el.innerHTML = `
+                <a href="#weather-collapse" class="dw-icon" onclick="document.getElementById('weather-collapse').open = true" style="text-decoration:none;">${wx.e}</a>
+                <div class="dw-info">
+                    <div class="dw-label">この日の天気 ▸ タップで詳細</div>
+                    <div class="dw-desc">${wx.d}</div>
+                    <div class="dw-stats">
+                        <span>🌡️ <strong>${Math.round(w.tempMax)}</strong> / ${Math.round(w.tempMin)}℃</span>
+                        <span>☔ <strong class="${rainClass.trim()}" style="${rainClass ? 'color:var(--shu);' : ''}">${w.rainMax}%</strong></span>
+                    </div>
+                </div>`;
+        }
+    }
+
+    function renderTimelineWeather(hourlyMap) {
+        const dayToDate = { '1': '2026-05-26', '2': '2026-05-27' };
+
+        document.querySelectorAll('.timeline').forEach(timeline => {
+            const day = timeline.dataset.day;
+            const date = dayToDate[day];
+            const hours = hourlyMap[date];
+            if (!hours) return;
+
+            timeline.querySelectorAll('.tl-item[data-time]').forEach(item => {
+                const timeStr = item.dataset.time;
+                const [h, m] = timeStr.split(':').map(Number);
+                const targetHour = m >= 30 ? h + 1 : h;
+
+                let best = hours[0];
+                let bestDiff = Infinity;
+                for (const hd of hours) {
+                    const hh = parseInt(hd.time.split(':')[0], 10);
+                    const diff = Math.abs(hh - targetHour);
+                    if (diff < bestDiff) { bestDiff = diff; best = hd; }
+                }
+
+                const wx = getWeather(best.code);
+                const rainClass = best.rain >= 50 ? ' hi' : '';
+
+                let el = item.querySelector('.tl-wx');
+                if (!el) {
+                    el = document.createElement('span');
+                    el.className = 'tl-wx';
+                    item.appendChild(el);
+                }
+                el.innerHTML = `<span class="wx-emoji">${wx.e}</span><span class="wx-temp">${Math.round(best.temp)}°</span><span class="wx-rain${rainClass}">${best.rain}%</span>`;
+            });
+        });
+    }
+
     function renderDetail(dailyMap, hourlyMap) {
         const container = document.getElementById('weather-detail-container');
         if (!container) return;
@@ -2513,6 +2683,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
             const dailyMap = buildDailyMap(data);
             const hourlyMap = buildHourlyMap(data);
             renderGlance(dailyMap);
+            renderDayWeather(dailyMap);
+            renderTimelineWeather(hourlyMap);
             renderDetail(dailyMap, hourlyMap);
         } catch (e) {
             const detail = document.getElementById('weather-detail-container');
